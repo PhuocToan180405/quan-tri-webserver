@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Custom CSS — Global Styles
+   Shared across all layouts (app, admin, client)
+   ========================================================================== */
+
+/* --- Base Typography --- */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Animations --- */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+.animate-slide-down {
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Input Focus Ring --- */
+.input-focus:focus {
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Glass Morphism --- */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Sidebar Links --- */
+.sidebar-link {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link:hover {
+    background-color: #1e293b;
+    color: #f1f5f9;
+}
+
+.sidebar-link.active {
+    color: #ffffff;
+}
+
+/* --- Sidebar Scrollbar --- */
+.sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
