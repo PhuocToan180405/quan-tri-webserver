@@ -4,15 +4,16 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\ZabbixAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Redirect trang chủ về trang đăng nhập
+| Trang chủ — Landing Page (Welcome)
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return redirect()->route('login');
+    return view('welcome');
 });
 
 /*
@@ -79,5 +80,11 @@ Route::prefix('admin')
     ->group(function () {
 
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('/server-metrics/{hostid}', [AdminController::class, 'getMetrics'])->name('server.metrics');
 
     });
+
+// URL test đồng bộ danh sách Máy chủ
+Route::get('/test-sync-servers', [ZabbixAPIController::class, 'syncServerFromZabbix']);
+// URL test đồng bộ Chỉ số sức khỏe (Metric)
+Route::get('/test-sync-metrics', [ZabbixAPIController::class, 'synServerMetricFromZabbix']);
